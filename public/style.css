@@ -1,0 +1,17 @@
+:root{font-family:Inter,system-ui,sans-serif;color-scheme:dark;background:#10100f;color:#f2eee6}
+*{box-sizing:border-box}
+body{margin:0}
+main{max-width:58rem;margin:auto;padding:clamp(1rem,5vw,4rem)}
+h1{font-size:clamp(2rem,6vw,3.5rem);letter-spacing:-.055em;color:#f2cf83;margin:0 0 1.5rem}
+form,article{background:#1a1916;border:1px solid #3d3629;border-radius:1rem;padding:1.25rem}
+textarea{width:100%;margin:.6rem 0 1rem;padding:.8rem;border:1px solid #645947;border-radius:.6rem;background:#111110;font:inherit;resize:vertical}
+fieldset{border:0;margin:0 0 1.2rem;padding:0}
+legend{margin-bottom:.6rem}
+#providers,.actions{display:flex;flex-wrap:wrap;gap:.65rem}
+#providers label{border:1px solid #4e4536;border-radius:.5rem;padding:.55rem}
+button{font:inherit;font-weight:600;border:1px solid #ab874c;background:#f0cc79;color:#211a0b;border-radius:.5rem;padding:.65rem .8rem;cursor:pointer}
+button+button{background:transparent;color:#f0cc79}
+button:disabled{opacity:.5;cursor:default}
+#results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:1rem}
+article h2{margin:0 0 .7rem;color:#f0cc79}
+article p{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;line-height:1.5}

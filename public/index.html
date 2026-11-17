@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cletus AI Bridge</title>
+<link rel="stylesheet" href="/style.css">
+<script src="/app.js" defer></script>
+</head>
+<body>
+<main>
+<h1>Cletus AI Bridge</h1>
+<form>
+<label for="task">Task or PR review</label>
+<textarea id="task" rows="8" maxlength="12000" placeholder="Describe the change and include the relevant PR context"></textarea>
+<fieldset><legend>Send to</legend><div id="providers">Loading providers…</div></fieldset>
+<div class="actions"><button id="submit" type="submit" disabled>Run review</button><button id="copy" type="button">Copy task for Grok Bot / Cursor</button></div>
+</form>
+<p id="status" role="status"></p>
+<section id="results" aria-label="Provider responses"></section>
+</main>
+</body>
+</html>
