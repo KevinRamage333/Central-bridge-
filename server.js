@@ -10,6 +10,7 @@ const models = {
 const assets = new Map([
   ['/', ['index.html', 'text/html']],
   ['/app.js', ['app.js', 'text/javascript']],
+  ['/report.js', ['report.js', 'text/javascript']],
   ['/style.css', ['style.css', 'text/css']],
 ]);
 const key = process.env.AI_GATEWAY_API_KEY;
@@ -44,15 +45,16 @@ async function runModel(provider, prompt) {
 
 let busy = false;
 const server = createServer(async (request, response) => {
-  const { pathname } = new URL(request.url, origin);
   if (request.headers.host !== new URL(origin).host) return json(response, 403, { error: 'Unexpected host.' });
   response.setHeader('X-Content-Type-Options', 'nosniff');
   response.setHeader('Content-Security-Policy', "default-src 'self'; frame-ancestors 'none'; base-uri 'none'");
   try {
+    const { pathname } = new URL(request.url, origin);
     if (request.method === 'GET' && assets.has(pathname)) {
       const [file, type] = assets.get(pathname);
+      const content = await readFile(new URL('./public/' + file, import.meta.url));
       response.writeHead(200, { 'Content-Type': type + '; charset=utf-8' });
-      return response.end(await readFile(new URL('./public/' + file, import.meta.url)));
+      return response.end(content);
     }
     if (request.method === 'GET' && pathname === '/api/providers') {
       return json(response, 200, Object.keys(models).map(name => ({ name, configured: Boolean(key && models[name]) })));
@@ -90,4 +92,4 @@ const server = createServer(async (request, response) => {
     else response.end();
   }
 });
-server.listen(port, '127.0.0.1', () => console.log('Cletus AI Bridge: ' + origin));
+server.listen(port, '127.0.0.1', () => console.log('Central Bridge: ' + origin));

@@ -3,21 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cletus AI Bridge</title>
+<title>Central Bridge</title>
 <link rel="stylesheet" href="/style.css">
-<script src="/app.js" defer></script>
+<script src="/app.js" type="module"></script>
 </head>
 <body>
 <main>
-<h1>Cletus AI Bridge</h1>
-<form>
+<h1>Central Bridge</h1>
+<form id="review">
 <label for="task">Task or PR review</label>
-<textarea id="task" rows="8" maxlength="12000" placeholder="Describe the change and include the relevant PR context"></textarea>
-<fieldset><legend>Send to</legend><div id="providers">Loading providers…</div></fieldset>
-<div class="actions"><button id="submit" type="submit" disabled>Run review</button><button id="copy" type="button">Copy task for Grok Bot / Cursor</button></div>
+<textarea id="task" rows="6" maxlength="12000" required placeholder="Describe the task and include the relevant PR context"></textarea>
+<fieldset><legend>Send to models</legend><div id="providers">Loading providers…</div></fieldset>
+<div class="actions"><button id="submit" type="submit" disabled>Run review</button><button id="copy-task" type="button">Copy task for an agent</button></div>
 </form>
+<details class="panel" open>
+<summary>Add an agent reply</summary>
+<form id="manual">
+<label for="source">Assistant</label>
+<select id="source"><option>Grok Bot / Cursor</option><option>Grok</option><option>Claude</option><option>Gemini</option><option>ChatGPT</option></select>
+<label for="reply">Reply</label>
+<textarea id="reply" rows="4" maxlength="24000" required placeholder="Paste the agent’s reply here"></textarea>
+<button type="submit">Add reply</button>
+</form>
+</details>
+<section id="report" aria-labelledby="report-title" hidden>
+<div class="report-heading"><h2 id="report-title">Review results</h2><div class="actions"><button id="copy-report" type="button">Copy handoff</button><button id="download-report" type="button">Download Markdown</button></div></div>
+<p id="report-task"></p>
+<div id="results"></div>
+</section>
 <p id="status" role="status"></p>
-<section id="results" aria-label="Provider responses"></section>
 </main>
 </body>
 </html>

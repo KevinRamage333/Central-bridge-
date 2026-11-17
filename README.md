@@ -1,6 +1,6 @@
-# Cletus AI Bridge
+# Central Bridge
 
-A local workspace for sending the same Cletus task to selected Grok, Claude, Gemini and OpenAI models and comparing the answers. The Grok Bot / Cursor button copies the task for the existing agent workflow.
+A local workspace for sending the same Cletus task to selected Grok, Claude, Gemini and OpenAI models and comparing the answers. Copy the task to Grok Bot, Cursor, or another assistant and paste the reply into the same review. Copy or download a Markdown handoff with the task, model responses, and pasted replies. Reviews are held in the current page until you reload or close it.
 
 ## Run locally
 
